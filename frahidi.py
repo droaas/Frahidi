@@ -999,6 +999,14 @@ def arud_visualization(peom_id,tafilat,tool,ptype):
     poem=minify_html(htm)
     return display(HTML(poem))
 
+def arud_visualization(peom_id,tool,ptype):
+    poem_info,vers_info,vers_split,pattern_ids,tafilat_count,tfilh,brokes,qafih_letters,qafih_hrkat,qafih_type,qsn,qst,defect\
+    =arud_representation(peom_id,tool)
+    html = PoemArrothRenderer()
+    htm = html.render_arroth_tasks(peom_id,poem_info,vers_info,tafilat,vers_split,pattern_ids,tafilat_count,tfilh,brokes,\
+                                  qafih_letters,qafih_hrkat,qafih_type,qsn,qst,defect,ptype)
+    poem=minify_html(htm)
+    return poem
 #################
 def get_test_data(peom_id,tool):
     poem_info,vers_info,vers_split,pattern_ids,tafilat_count,tfilh,brokes,qafih_letters,qafih_hrkat,qafih_type,qsn,qst,defect\
