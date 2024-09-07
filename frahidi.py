@@ -14,14 +14,14 @@ kamri=list('ءٱاإأآبجحخعغفقكمهوؤىيئ')
 # ترميز معلومات القصيدة للعرض
 peoms_info={
 "topics":dict(pd.read_csv('corpus/Topics.csv',sep='\t',encoding='utf-16').Topic),
-"rhymes":dict(pd.read_csv('corpus\\Rhymes.csv',sep='\t',encoding='utf-16').Qafih),
-"periods":dict(pd.read_csv('corpus\\Periods.csv',sep='\t',encoding='utf-16').Period),
-"authers":dict(pd.read_csv('corpus\\Authers.csv',sep='\t',encoding='utf-16').Auther),
-"sea":dict(pd.read_csv('corpus\\Seas.csv',sep='\t',encoding='utf-16').Sname)}
+"rhymes":dict(pd.read_csv('corpus/Rhymes.csv',sep='\t',encoding='utf-16').Qafih),
+"periods":dict(pd.read_csv('corpus/Periods.csv',sep='\t',encoding='utf-16').Period),
+"authers":dict(pd.read_csv('corpus/Authers.csv',sep='\t',encoding='utf-16').Auther),
+"sea":dict(pd.read_csv('corpus/Seas.csv',sep='\t',encoding='utf-16').Sname)}
 
 ############ أستدعاء قاعدة بيانات صور جميع البحور الشعرية
-tafilat=pd.read_csv('corpus\\tafilat_patterns.csv',sep='\t',encoding='utf-16')
-seas=pd.read_csv('corpus\\Seas_info.csv',sep='\t',encoding='utf-16')
+tafilat=pd.read_csv('corpus/tafilat_patterns.csv',sep='\t',encoding='utf-16')
+seas=pd.read_csv('corpus/Seas_info.csv',sep='\t',encoding='utf-16')
 sea=list(seas.Snum)
 
 
