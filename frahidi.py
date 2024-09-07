@@ -4,7 +4,7 @@ from arroth_template import *
 from IPython.display import display, HTML
 
 # المدونة الشعرية العروضية
-arud_corpus=pd.read_csv('corpus\poems.csv',sep='\t',encoding='utf-16')
+#arud_corpus=pd.read_csv('corpus\poems.csv',sep='\t',encoding='utf-16')
 #  الاحرف الابجدية والتشكيلات 
 abgd=list('ءٱاإأآبةتثجحخدذرزسشصضطظعغفقكلمنهوؤىيئ')
 hrkh=list('ًٌٍَُِّْٰ~')
