@@ -24,7 +24,17 @@ tafilat=pd.read_csv('corpus/tafilat_patterns.csv',sep='\t',encoding='utf-16')
 seas=pd.read_csv('corpus/Seas_info.csv',sep='\t',encoding='utf-16')
 sea=list(seas.Snum)
 
-
+#################
+b1= """
+<div align="right" style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri","sans-serif";'>
+    <table dir="rtl" style="float: right;width: 4.9e+2pt;border-collapse:collapse;border:none;margin-left:6.75pt;margin-right:6.75pt;">
+        <tbody>
+    """
+b2="""
+        </tbody>
+    </table>
+</div>
+"""
 
 # ارجاع صور تفعيلات البحر 
 def get_Sea_tafilat_info(sid):
