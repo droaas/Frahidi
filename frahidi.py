@@ -1017,6 +1017,7 @@ def get_test_data(peom_id,tool):
     return poem
 
 def arud_tasks(pid,tool,ptype,task):
+    from bs4 import BeautifulSoup
     poem=arud_visualization(pid,tool,ptype)
     soup = BeautifulSoup(poem, 'html.parser')
     soup.find_all('tr', class_="qafih_letters")
