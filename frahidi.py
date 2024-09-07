@@ -716,7 +716,7 @@ def get_solutions_space(poem_id,tool):
         sdr_writing.append(araby.strip_tashkeel(sdr_merge[0]))
         agz_writing.append(araby.strip_tashkeel(agz_merge[0]))
         sp=get_Sea_tafilat_info(poem_info["Cluster"])
-        tafilat_count=int(seas[seas.Snum==poem_info["Cluster"]].Tc)
+        tafilat_count=int(seas[seas.Snum==poem_info["Cluster"]].Tc.iloc[0])
         solutions_space.append(get_verse_matching(num[vid],poem_info["Cluster"],sp,tafilat_count,sdr_split, agz_split))
     return solutions_space,num,poem_info,sdr_writing,agz_writing
 
@@ -828,7 +828,7 @@ def arud_representation(peom_id,tool):
         vers_split=[]
         sdr_split_writeing=[i[0] for i in sdr_arroth]
         agz_split_writeing=[i[0] for i in agz_arroth]
-        tafilat_count=int(seas[seas.Snum==poem_info["Cluster"]].Tc)
+        tafilat_count=int(seas[seas.Snum==poem_info["Cluster"]].Tc.iloc[0])
 
         for i in range(len(sdr_split_writeing)):
             vers_merge=[]
