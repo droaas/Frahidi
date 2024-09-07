@@ -998,3 +998,109 @@ def arud_visualization(peom_id,tafilat,tool,ptype):
                                   qafih_letters,qafih_hrkat,qafih_type,qsn,qst,defect,ptype)
     poem=minify_html(htm)
     return display(HTML(poem))
+
+#################
+def get_test_data(peom_id,tool):
+    poem_info,vers_info,vers_split,pattern_ids,tafilat_count,tfilh,brokes,qafih_letters,qafih_hrkat,qafih_type,qsn,qst,defect\
+    =arud_representation(peom_id,tool)
+    poem=pd.DataFrame({'sdr':vers_info['sdr_imlaai_writeing'],'agz':vers_info['agz_imlaai_writeing'],'brokes':brokes,\
+              'sdr_write':vers_info['sdr_arroth_writeing'],'agz_write':vers_info['agz_arroth_writeing'],\
+                       'ksr':[len([j for j in i if j==0]) for i in brokes],'tfilh':tfilh,'vers_split':vers_split})
+    return poem
+
+def arud_tasks(pid,tool,ptype,task):
+    poem=arud_visualization(pid,tool,ptype)
+    soup = BeautifulSoup(poem, 'html.parser')
+    soup.find_all('tr', class_="qafih_letters")
+    # المهام
+    tasks=soup.find_all('tr', class_="tasks")
+    #عيوب القافية
+    defect=soup.find_all('tr', class_="defect")
+    # القصيدة
+    title=soup.find_all('tr', class_="title")
+    # الشاعر
+    poet=soup.find_all('tr', class_="poet")
+    # الفترة
+    period=soup.find_all('tr', class_="period")
+    # الموضوع
+    topic=soup.find_all('tr', class_="topic")
+    # البحر
+    sea=soup.find_all('tr', class_="sea")
+    # حرف الروي
+    rawy=soup.find_all('tr', class_="rawy")
+    # البيت رقم
+    poem_id=soup.find_all('tr', class_="poem_id")
+    # تشطير البيت
+    byt=soup.find_all('tr', class_="byt")
+    # الكتابة العروضية
+    arroth_writeing=soup.find_all('tr', class_="arroth_writeing")
+    # التقطيع
+    verse_words_split=soup.find_all('tr', class_="verse_words_split")
+    # التفعيلات
+    verse_tafilat_split=soup.find_all('tr', class_="verse_tafilat_split")
+    # الترميز
+    set_tafilat_code=soup.find_all('tr', class_="set_tafilat_code")
+    # الزحافات والعلل
+    set_zhaaf_eilah=soup.find_all('tr', class_="set_zhaaf_eilah")
+    # التفاصيل
+    zhaaf_eilah_det=soup.find_all('tr', class_="zhaaf_eilah_det")
+    # التكسير
+    tafilat_brokeing=soup.find_all('tr', class_="tafilat_brokeing")
+    # تصحيح التكسير
+    tafilat_correct_brokeing=soup.find_all('tr', class_="tafilat_correct_brokeing")
+    # القافية
+    rhyme=soup.find_all('tr', class_="rhyme")
+    # حدود القافية
+    loc=soup.find_all('tr', class_="loc")
+    # نوع القافية
+    qafih_type=soup.find_all('tr', class_="qafih_type")
+    # حروف القافية
+    qafih_letters1=soup.find_all('tr', class_="qafih_letters1")
+    qafih_letters2=soup.find_all('tr', class_="qafih_letters2")
+    # حركات القافية
+    qafih_hrkat1=soup.find_all('tr', class_="qafih_hrkat1")
+    qafih_hrkat2=soup.find_all('tr', class_="qafih_hrkat2")
+    ###########
+    b=[]
+    b.append(b1)
+    b.extend(tasks)
+    if task in [1,2,3,4,5,6]:
+        b.extend(title)
+        b.extend(poet)
+    if task in [1]:    
+        b.extend(period)
+        b.extend(topic)
+    if task in [1,2,3,4,5,6]:            
+        b.extend(sea)
+    if task in [1,6]:                
+        b.extend(rawy)
+    for i in range(len(byt)):
+        #b.append(poem_id[i])
+        if task in [2,3,4,5,6]:
+            b.append(byt[i])
+        if task in [2,3,4,5]:
+            b.append(arroth_writeing[i])
+        if task in [3,4,5]:
+            b.append(verse_words_split[i])
+        if task in [4,5]:        
+            b.append(verse_tafilat_split[i])
+            b.append(set_tafilat_code[i])
+            b.append(set_zhaaf_eilah[i])
+        if task ==5:        
+            b.append(tafilat_brokeing[i])
+            b.append(tafilat_correct_brokeing[i])
+        if task ==6:        
+            b.append(rhyme[i])
+            b.append(loc[i])
+            b.append(qafih_type[i])
+            b.append(qafih_letters1[i])
+            b.append(qafih_letters2[i])
+            b.append(qafih_hrkat1[i])
+            b.append(qafih_hrkat2[i])
+    if task ==6:        
+        b.extend(defect)
+    b.append(b2)
+    htm=''
+    for i in b:
+        htm = htm +str(i)+'\n'
+    return htm
