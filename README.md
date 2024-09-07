@@ -1,7 +1,7 @@
 # Frahidi System for Arabic Poetry Prosody Tasks
 
  <p align="center"> 
- <img src = "https://raw.githubusercontent.com/droaas/Frahidi/main/images/FarahidiLogo.png" width = "200px"/>
+ <img src = "https://raw.githubusercontent.com/droaas/Frahidi/main/images/FarahidiLogo.png" width = "300px"/>
  </p>
  
 Welcome to Frahidi, a comprehensive system designed to perform prosodic tasks for classical Arabic poetry. Frahidi generates high-quality datasets that can be used for fine-tuning AI models, offering robust support for Arabic poetry's complex prosodic structure. This system follows the traditional principles of Arabic prosody while leveraging modern AI technologies.
