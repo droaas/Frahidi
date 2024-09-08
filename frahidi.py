@@ -998,17 +998,6 @@ def render_qafih_labels1(labels):
     else:
         return QAFIH_LABELS2.format(loc1=labels,loc2=labels,loc3=labels)
 
-
-
-def arud_visualization(peom_id,tafilat,tool,ptype):
-    poem_info,vers_info,vers_split,pattern_ids,tafilat_count,tfilh,brokes,qafih_letters,qafih_hrkat,qafih_type,qsn,qst,defect\
-    =arud_representation(peom_id,tool)
-    html = PoemArrothRenderer()
-    htm = html.render_arroth_tasks(peom_id,poem_info,vers_info,tafilat,vers_split,pattern_ids,tafilat_count,tfilh,brokes,\
-                                  qafih_letters,qafih_hrkat,qafih_type,qsn,qst,defect,ptype)
-    poem=minify_html(htm)
-    return display(HTML(poem))
-
 def arud_visualization(peom_id,tool,ptype):
     poem_info,vers_info,vers_split,pattern_ids,tafilat_count,tfilh,brokes,qafih_letters,qafih_hrkat,qafih_type,qsn,qst,defect\
     =arud_representation(peom_id,tool)
@@ -1122,4 +1111,6 @@ def arud_tasks(pid,tool,ptype,task):
     htm=''
     for i in b:
         htm = htm +str(i)+'\n'
+    if task ==0:        
+        htm=poem
     return htm
